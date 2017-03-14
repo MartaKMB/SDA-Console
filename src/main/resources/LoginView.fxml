@@ -7,7 +7,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!-- na koncu linijki fx:controller po zmianie w SceneBuilder Controller w lewym dolnym narozniku -->
+<!-- na koncu linijki fx:controller-->
+
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="402.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pl.sdacademy.controller.LoginController">
    <children>
       <GridPane>
