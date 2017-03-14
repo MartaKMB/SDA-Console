@@ -51,4 +51,5 @@ public class XMLFactoryTest {
 
         Assert.assertTrue(user.equals(userFromXml));
     }
+
 }

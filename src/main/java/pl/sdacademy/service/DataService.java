@@ -11,17 +11,15 @@ public class DataService {
 
     private File file;
 
-    public DataService(File file) {
+    public DataService() {
         this.file = new File("C:\\Users\\RENT\\Desktop\\data\\data.dat");
-        ;
     }
 
-    public DataService() {
-    }
+
 
     public void saveData(String xmlString) {
 
-//        FileUtils to kalsa statyczna biblioteki
+//        FileUtils to klasa statyczna biblioteki
 //        touch - pusty plik
         try {
             FileUtils.touch(file);
@@ -50,9 +48,6 @@ public class DataService {
             e.printStackTrace();
         }
 
-
-
         return user;
-
     }
 }
