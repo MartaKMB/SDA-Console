@@ -1,11 +1,14 @@
 package pl.sdacademy.service;
 
 import org.apache.commons.io.FileUtils;
+import pl.sdacademy.model.Company;
 import pl.sdacademy.model.User;
 import pl.sdacademy.xml.XMLFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DataService {
 
@@ -14,8 +17,6 @@ public class DataService {
     public DataService() {
         this.file = new File("C:\\Users\\RENT\\Desktop\\data\\data.dat");
     }
-
-
 
     public void saveData(String xmlString) {
 
@@ -49,5 +50,18 @@ public class DataService {
         }
 
         return user;
+    }
+
+    public List<String> printCompanyInfo(Company company) {
+        List<String> result = new ArrayList<>();
+        result.add(company.getName());
+        result.add(company.getAddress().toString());
+
+//        gdyby nip byl int'em to trzeba by: String.valueOf(company.getNip())
+
+        result.add(company.getNip());
+//        result.add(company.getRegon());
+
+        return result;
     }
 }
