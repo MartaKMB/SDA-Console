@@ -11,6 +11,7 @@ public class Address {
     private String country;
     private StreetPrefix streetPrefix;
 
+
     public Address() {
     }
 
