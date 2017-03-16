@@ -9,6 +9,8 @@ import javafx.scene.control.ToggleGroup;
 import pl.sdacademy.model.Address;
 import pl.sdacademy.model.Company;
 import pl.sdacademy.model.StreetPrefix;
+import pl.sdacademy.pdf.PdfFactory;
+import pl.sdacademy.service.DataService;
 
 public class CompanyCreateController {
 
@@ -74,9 +76,6 @@ public class CompanyCreateController {
                     streetPrefix = StreetPrefix.AVENUE;
                     break;
             }
-
-
-
         }
     }
 
@@ -97,7 +96,11 @@ public class CompanyCreateController {
         company.setAddress(address);
         company.setNip(nipField.getText());
 
-        System.out.println(company);
+        DataService dataService = new DataService();
+
+//        jak metoda zwraca void nie mozemy uzywac sout
+
+        dataService.printOutCompanyInfo(company);
 
     }
 
@@ -107,5 +110,30 @@ public class CompanyCreateController {
         streetRadio.setToggleGroup(group);
         squereRadio.setToggleGroup(group);
         avenueRadio.setToggleGroup(group);
+    }
+
+
+//    dotyczy przycisku tworzacego pdf
+
+    @FXML
+    void createPDFOnAction(ActionEvent event) {
+        Company company = new Company();
+
+        company.setName(nameField.getText());
+        Address address = new Address();
+        address.setStreetPrefix(streetPrefix);
+        address.setStreetName(streetField.getText());
+        address.setHouseNumber(houseNumberField.getText());
+        address.setFlatNumber(flatNumberField.getText());
+        address.setPostalCode(postalCodeField.getText());
+        address.setCity(cityField.getText());
+        company.setAddress(address);
+        company.setNip(nipField.getText());
+
+        DataService dataService = new DataService();
+        dataService.printOutCompanyInfo(company);
+
+        PdfFactory pdfFactory = new PdfFactory();
+        pdfFactory.createPdfFromSceneBuilder(company);
     }
 }
