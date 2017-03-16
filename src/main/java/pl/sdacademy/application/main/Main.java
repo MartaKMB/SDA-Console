@@ -51,6 +51,5 @@ public class Main extends Application {
         primaryStage.setTitle("Login");
 
         primaryStage.show();
-
     }
 }

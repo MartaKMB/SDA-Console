@@ -2,17 +2,17 @@ package pl.sdacademy.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import pl.sdacademy.model.Address;
 import pl.sdacademy.model.Company;
 import pl.sdacademy.model.StreetPrefix;
 import pl.sdacademy.pdf.PdfFactory;
 import pl.sdacademy.service.DataService;
 
-public class CompanyCreateController {
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class CompanyCreateController extends Controller {
 
     @FXML
     private TextField streetField;
@@ -80,7 +80,11 @@ public class CompanyCreateController {
     }
 
     @FXML
-    void addCompanyOnAction(ActionEvent event) {
+    Company addCompanyOnAction() {
+        return bindToModelCompany();
+    }
+
+    private Company bindToModelCompany() {
         Company company = new Company();
 
         company.setName(nameField.getText());
@@ -101,7 +105,7 @@ public class CompanyCreateController {
 //        jak metoda zwraca void nie mozemy uzywac sout
 
         dataService.printOutCompanyInfo(company);
-
+        return company;
     }
 
     @FXML
@@ -110,30 +114,42 @@ public class CompanyCreateController {
         streetRadio.setToggleGroup(group);
         squereRadio.setToggleGroup(group);
         avenueRadio.setToggleGroup(group);
+
+//        validacja - odniesienie do kodu pocztowego
+//        listener - czeka na zdarzenie, do sterowania aktywnoscia pola
+
+//        validate();
+
     }
 
+    private void validate() {
+
+//            regex - wyrazenia regularne, daja mozliwosc ograniczenia wpisania wartosci
+//            dzieki nim walidacja na dane pole
+//        Pattern - wzor
+
+        Pattern zipPattern = Pattern.compile("(^\\d{2}-\\d{3}$)");
+        Matcher zipMatcher = zipPattern.matcher(postalCodeField.getText());
+        if (zipMatcher.find()) {
+            String zip = zipMatcher.group(1);
+            showConfirmationAllert("Postal code is correct");
+        } else {
+            showErrorAlert("Wrong postal code!");
+
+        }
+    }
 
 //    dotyczy przycisku tworzacego pdf
 
     @FXML
     void createPDFOnAction(ActionEvent event) {
-        Company company = new Company();
-
-        company.setName(nameField.getText());
-        Address address = new Address();
-        address.setStreetPrefix(streetPrefix);
-        address.setStreetName(streetField.getText());
-        address.setHouseNumber(houseNumberField.getText());
-        address.setFlatNumber(flatNumberField.getText());
-        address.setPostalCode(postalCodeField.getText());
-        address.setCity(cityField.getText());
-        company.setAddress(address);
-        company.setNip(nipField.getText());
-
-        DataService dataService = new DataService();
-        dataService.printOutCompanyInfo(company);
 
         PdfFactory pdfFactory = new PdfFactory();
-        pdfFactory.createPdfFromSceneBuilder(company);
+        pdfFactory.createPdfFromSceneBuilder(addCompanyOnAction());
+    }
+
+    @FXML
+    void validateOnAction(ActionEvent event) {
+        validate();
     }
 }

@@ -45,6 +45,7 @@
             <RadioButton fx:id="squereRadio" mnemonicParsing="false" onAction="#choosePrefixOnAction" prefHeight="17.0" prefWidth="62.0" text="plac" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
             <Button fx:id="addCompanyButton" mnemonicParsing="false" onAction="#addCompanyOnAction" text="Add Company" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
             <Button fx:id="createPDFButton" mnemonicParsing="false" onAction="#createPDFOnAction" text="Crate PDF" GridPane.rowIndex="8" />
+            <Button fx:id="validateButton" mnemonicParsing="false" onAction="#validateOnAction" text="Validate" GridPane.rowIndex="5" />
          </children>
       </GridPane>
    </children>

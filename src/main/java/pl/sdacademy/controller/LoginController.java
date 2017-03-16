@@ -9,7 +9,7 @@ import javafx.scene.control.TextField;
 import pl.sdacademy.model.User;
 import pl.sdacademy.service.UserService;
 
-public class LoginController {
+public class LoginController extends Controller{
 
     @FXML
     private Button submit;
@@ -43,16 +43,13 @@ public class LoginController {
             UserService userService = new UserService();
 
             if (userService.authenticate(user)) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "You are log in");
-                alert.show();
+                showConfirmationAllert("You are log in");
                 flag = false;
             } else {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION, "Wrong data");
-                alert.show();
+                showErrorAlert("Wrong data");
                 flag = false;
             }
         }
-
     }
 
 }
