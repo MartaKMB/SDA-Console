@@ -9,9 +9,6 @@ import javax.xml.stream.XMLStreamReader;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-/**
- * Created by RENT on 2017-03-13.
- */
 public class XMLFactory<T> {
 
 //    ? pytajnik - nie rozrozniamy typow

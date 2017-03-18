@@ -1,14 +1,13 @@
 package pl.sdacademy.service;
 
 import org.apache.commons.io.FileUtils;
-import pl.sdacademy.model.Company;
-import pl.sdacademy.model.StreetPrefix;
-import pl.sdacademy.model.User;
+import pl.sdacademy.model.*;
 import pl.sdacademy.xml.XMLFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -25,6 +24,7 @@ public class DataService {
 
 //        FileUtils to klasa statyczna biblioteki
 //        touch - pusty plik
+
         try {
             FileUtils.touch(file);
 
@@ -117,4 +117,43 @@ public class DataService {
 
         return result;
     }
+
+//    praca w grupach
+
+    public Bill loadBillData() {
+
+       Bill bill = null;
+        XMLFactory<Bill> xmlFactory = new XMLFactory<Bill>(Bill.class);
+        String xml;
+        try {
+            xml = FileUtils.readFileToString(file, "UTF-8");
+            bill = xmlFactory.xmlToObject(xml);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return bill;
+    }
+
+    public List<String> printBillInfo(Bill bill) {
+        List<String> result = new ArrayList();
+        DecimalFormat df = new DecimalFormat("#.##");
+
+//        result.add(bill.getId().toString());
+        result.add(bill.getDate().toString());
+
+        result.add("___________________________________");
+        for(BillItem e : bill.getListOfItems())
+        {
+            result.add(e.getAmount()+" x "+ e.getItemName() + " "
+                    + df.format(e.getPrice())+" zl = "+" "+
+                    df.format(e.getAmount()*e.getPrice()) + " zl");
+        }
+        result.add("___________________________________");
+        result.add("\t Price: \t" + df.format(bill.getPrice()).toString());
+        result.add("Paid:\t"+ bill.getPayment().toString());
+
+        return result;
+    }
+
 }
