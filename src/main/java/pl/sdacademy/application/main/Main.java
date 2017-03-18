@@ -80,6 +80,7 @@ public class Main extends Application {
 //        initFile();
 //        User userFromFile = dataService.loadData();
 
+        /*
         PdfFactory pdfFactory = new PdfFactory();
 //        pdfFactory.createPdf();
 
@@ -97,6 +98,16 @@ public class Main extends Application {
 
         pdfFactory.createPdfBill(bill);
         System.out.println("The end");
+        */
+
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/BillFormView.fxml"));
+
+        StackPane stackPane = loader.load();
+        Scene scene = new Scene(stackPane);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("My First JavaFX App - LOGOWANIE");
+
+        primaryStage.show();
 
     }
 

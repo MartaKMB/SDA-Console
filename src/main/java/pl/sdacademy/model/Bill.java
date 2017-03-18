@@ -65,6 +65,30 @@ public class Bill {
         }
     }
 
+    public void updateItem(BillItem item, Integer amountBough) {
+
+        Integer addedAmount = item.getAmount() * amountBough;
+
+        if (listOfItems.contains(item)) {
+
+            Integer oldAmount = listOfItems.get(listOfItems.indexOf(item)).getAmount();
+
+            price -= item.getPrice() * oldAmount;
+            tax -= item.getPrice() * oldAmount * item.getTax();
+
+            Integer newAmount = addedAmount;
+            listOfItems.get(listOfItems.indexOf(item)).setAmount(newAmount);
+
+
+        } else {
+            item.setAmount(addedAmount);
+            listOfItems.add(item);
+        }
+
+        price += item.getPrice() * addedAmount;
+        tax += item.getPrice() * addedAmount * item.getTax();
+    }
+
     public UUID getId() {
         return id;
     }

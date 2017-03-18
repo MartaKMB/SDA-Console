@@ -7,8 +7,11 @@ import pl.sdacademy.xml.XMLFactory;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Properties;
 
@@ -139,8 +142,8 @@ public class DataService {
         List<String> result = new ArrayList();
         DecimalFormat df = new DecimalFormat("#.##");
 
-//        result.add(bill.getId().toString());
-        result.add(bill.getDate().toString());
+        SimpleDateFormat dt1 = new SimpleDateFormat("dd-MM-yyyy");
+        result.add(dt1.format(bill.getDate()).toString());
 
         result.add("___________________________________");
         for(BillItem e : bill.getListOfItems())
