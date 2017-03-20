@@ -1,18 +1,15 @@
 package pl.sdacademy.application.main;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import pl.sdacademy.model.Bill;
-import pl.sdacademy.model.BillItem;
-import pl.sdacademy.pdf.PdfFactory;
-import pl.sdacademy.service.DataService;
-import pl.sdacademy.xml.XMLFactory;
+import lambdaPractice.MyClassTest;
+import lambdaPractice.MyLambda;
+import lambdaPractice.MyLamdaConstructor;
+import pl.sdacademy.model.User;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class Main extends Application {
 
@@ -74,7 +71,7 @@ public class Main extends Application {
 
 //        DataService dataService = new DataService("C:\\Users\\Miki\\Desktop\\data\\data2.dat");
 
-        DataService dataService = new DataService();
+//        DataService dataService = new DataService();
 
 //        login();
 //        initFile();
@@ -100,6 +97,7 @@ public class Main extends Application {
         System.out.println("The end");
         */
 
+        /*
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/BillFormView.fxml"));
 
         StackPane stackPane = loader.load();
@@ -108,9 +106,11 @@ public class Main extends Application {
         primaryStage.setTitle("My First JavaFX App - LOGOWANIE");
 
         primaryStage.show();
+        */
 
     }
 
+    /*
     public List<BillItem> createList(){
         List<BillItem> billitemList = new ArrayList<>();
         BillItem paczek = new BillItem();
@@ -147,4 +147,5 @@ public class Main extends Application {
         billitemList.add(kawa);
         return billitemList;
     }
+    */
 }
