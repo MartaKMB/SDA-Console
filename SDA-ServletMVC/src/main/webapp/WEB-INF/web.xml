@@ -1,0 +1,12 @@
+<web-app>
+    <servlet>
+        <servlet-name>HelloServlet</servlet-name>
+        <servlet-class>pl.marta.servlet.HelloServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>HelloServlet</servlet-name>
+        <!-- /* czyli bierzemy wszystko -->
+        <url-pattern>/*</url-pattern>
+    </servlet-mapping>
+</web-app>

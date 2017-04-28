@@ -1,0 +1,34 @@
+<web-app>
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>pl.marta.MyServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>PathServlet</servlet-name>
+        <servlet-class>pl.marta.PathServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>pl.marta.UserServlet</servlet-class>
+    </servlet>
+
+
+    <!-- pod jaka sciezka jest co dostepne, jak * to wszystkie mappingi obsluzone przez serwer -->
+
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PathServlet</servlet-name>
+        <url-pattern>/path/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/users/*</url-pattern>
+    </servlet-mapping>
+</web-app>
